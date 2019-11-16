@@ -1,7 +1,7 @@
 package dev.sumitsu.s3mocktest
 
-import java.io.{InputStream, InputStreamReader}
-import java.nio.charset.{Charset, StandardCharsets}
+import java.io.InputStream
+import java.nio.charset.StandardCharsets
 
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.DeleteObjectsRequest

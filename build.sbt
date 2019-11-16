@@ -17,3 +17,5 @@ libraryDependencies ++= Seq(
   "org.apache.hadoop" % "hadoop-common" % verHadoop % "test",
   "org.apache.hadoop" % "hadoop-aws" % verHadoop % "test"
 )
+
+// build.sbt timestamp (change to clear ci cache): 20191116205524
