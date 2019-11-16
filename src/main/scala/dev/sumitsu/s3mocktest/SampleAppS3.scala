@@ -46,6 +46,10 @@ class SampleAppS3(s3: AmazonS3, bucketName: String) extends Logging {
 
 object SampleAppS3 {
 
+  /**
+   * Sample data to be written to S3: the first element of each tuple is the S3 key; second element is the value to be
+   * written.
+   */
   val ObjData: Seq[(String, String)] = Seq(
     "abc" -> "ABC",
     "sub0/def" -> "DEF",
