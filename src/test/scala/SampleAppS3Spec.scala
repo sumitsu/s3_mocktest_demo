@@ -1,0 +1,3 @@
+class SampleAppS3Spec {
+
+}
