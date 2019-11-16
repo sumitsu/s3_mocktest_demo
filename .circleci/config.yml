@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-      - image: circleci/python:3
     working_directory: ~/repo
     steps:
       - checkout
@@ -11,6 +10,8 @@ jobs:
       - run:
           name: install moto_server (mock S3)
           command: |
+            sudo apt-get update
+            sudo apt-get install python3
             curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
             chmod 755 /tmp/get-pip.py
             sudo python3 /tmp/get-pip.py
