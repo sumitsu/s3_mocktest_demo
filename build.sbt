@@ -1,6 +1,6 @@
 name := "s3_mocktest_demo"
 organization := "net.sumitsu"
-version := "1.0.0"
+version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.11.12"
 

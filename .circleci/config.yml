@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: v0001-dependency-cache-{{ .Branch }}-{{ checksum "build.sbt" }}
+
+      - run:
+          name: run tests
+          command: |
+            cd ~/repo
+            sbt clean test
+
+      - save_cache:
+          paths:
+            - "~/.m2"
+            - "~/.sbt"
+            - "~/.ivy2"
+            - "~/repo/target/resolution-cache"
+            - "~/repo/target/streams"
+            - "~/repo/project/target/resolution-cache"
+            - "~/repo/project/target/streams"
+          key: v0001-dependency-cache-{{ .Branch }}-{{ checksum "build.sbt" }}
+
+      - store_test_results:
+          path: ~/repo/s3_mocktest_demo/target/test-reports
