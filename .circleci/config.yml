@@ -7,12 +7,21 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: install moto_server (mock S3)
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+            chmod 755 /tmp/get-pip.py
+            sudo python3 /tmp/get-pip.py
+            sudo pip3 install moto[server]
+
       - restore_cache:
           key: v0001-dependency-cache-{{ .Branch }}-{{ checksum "build.sbt" }}
 
       - run:
           name: run tests
           command: |
+            moto_server s3 -p 9999 &
             cd ~/repo
             sbt clean test
 
