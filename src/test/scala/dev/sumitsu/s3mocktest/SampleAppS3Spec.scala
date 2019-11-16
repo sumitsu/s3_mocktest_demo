@@ -13,6 +13,11 @@ class SampleAppS3Spec extends FunSpec with BeforeAndAfterAll with Logging {
   val mockS3: AmazonS3 = AmazonS3TestUtil.buildLocalMockTestS3Client()
   val testApp: SampleAppS3 = new SampleAppS3(mockS3, testBucketName)
 
+  override def beforeAll(): Unit = {
+    super.beforeAll()
+    mockS3.createBucket(testBucketName)
+  }
+
   describe("component reliant on AWS S3 interactions") {
     it("should write objects to S3 and read them back") {
       testApp.s3Write()
