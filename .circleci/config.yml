@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-      - image: circleci/python:latest
+      - image: circleci/python:3
     working_directory: ~/repo
     steps:
       - checkout
