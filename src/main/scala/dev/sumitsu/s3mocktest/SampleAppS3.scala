@@ -54,7 +54,7 @@ object SampleAppS3 {
     "abc" -> "ABC",
     "sub0/def" -> "DEF",
     "sub0/sub1/ghi" -> "GHI"
-  )
+    )
   val ObjKeys: Seq[String] = ObjData.map(_._1)
   val ObjValues: Seq[String] = ObjData.map(_._2)
 

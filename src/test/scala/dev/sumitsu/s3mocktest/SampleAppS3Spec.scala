@@ -1,16 +1,9 @@
 package dev.sumitsu.s3mocktest
 
-import java.util.UUID
+import dev.sumitsu.s3mocktest.testutil.S3Spec
 
-import com.amazonaws.services.s3.AmazonS3
-import dev.sumitsu.s3mocktest.testutil.AmazonS3TestUtil
-import dev.sumitsu.s3mocktest.util.Logging
-import org.scalatest.{BeforeAndAfterAll, FunSpec}
+class SampleAppS3Spec extends S3Spec {
 
-class SampleAppS3Spec extends FunSpec with BeforeAndAfterAll with Logging {
-
-  val testBucketName: String = UUID.randomUUID.toString
-  val mockS3: AmazonS3 = AmazonS3TestUtil.buildLocalMockTestS3Client()
   val testApp: SampleAppS3 = new SampleAppS3(mockS3, testBucketName)
 
   override def beforeAll(): Unit = {
