@@ -11,7 +11,7 @@ class SampleAppS3Spec extends S3Spec {
     mockS3.createBucket(testBucketName)
   }
 
-  describe("component reliant on AWS S3 interactions") {
+  describe("component reliant on AWS S3 interactions via AWS Java API") {
     it("should write objects to S3 and read them back") {
       testApp.s3Write()
       assert(
