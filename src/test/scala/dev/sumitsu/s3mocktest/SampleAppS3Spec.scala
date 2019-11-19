@@ -6,11 +6,6 @@ class SampleAppS3Spec extends S3Spec {
 
   val testApp: SampleAppS3 = new SampleAppS3(mockS3, testBucketName)
 
-  override def beforeAll(): Unit = {
-    super.beforeAll()
-    mockS3.createBucket(testBucketName)
-  }
-
   describe("component reliant on AWS S3 interactions via AWS Java API") {
     it("should write objects to S3 and read them back") {
       testApp.s3Write()
