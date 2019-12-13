@@ -1,5 +1,6 @@
 package dev.sumitsu.s3mocktest
 
+import org.apache.spark.sql.types.{IntegerType, StructField, StructType}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 class SampleSparkAppS3(spark: SparkSession, bucketName: String) {
@@ -10,12 +11,18 @@ class SampleSparkAppS3(spark: SparkSession, bucketName: String) {
 
   def writeDfToS3(): Unit = {
     import spark.implicits._
-    val df = spark.createDataset(spark.sparkContext.parallelize(0 until 500)).toDF(WriteColumnName)
+    val df =
+      spark
+        .createDataset(spark.sparkContext.parallelize(0 until 500))
+        .toDF(WriteColumnName)
     df.write.json(sparkSqlS3URI)
   }
 
   def readDfFromS3(): DataFrame = {
-    spark.read.json(sparkSqlS3URI)
+    spark
+      .read
+      .schema(StructType(Array(StructField(name = WriteColumnName, dataType = IntegerType))))
+      .json(sparkSqlS3URI)
   }
 
 }

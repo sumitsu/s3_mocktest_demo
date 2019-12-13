@@ -9,7 +9,7 @@ class SampleSparkAppS3Spec extends S3Spec with SparkSpec {
   private val hadoopConf = spark.sparkContext.hadoopConfiguration
   hadoopConf.set("fs.s3a.endpoint", AwsEndpointUriStr)
   hadoopConf.set("fs.s3.impl", classOf[S3AFileSystem].getName)
-  // keys (access.key, secret.key) can be anything (moto_server doesn't require authentication), but will throw
+  // keys (access.key, secret.key) can be anything (mock server doesn't require authentication), but will throw
   // exception if not provided or if provided as "" (empty string)
   hadoopConf.set("fs.s3a.access.key", MockAWSAccessKey)
   hadoopConf.set("fs.s3a.secret.key", MockAWSSecretKey)
@@ -17,6 +17,7 @@ class SampleSparkAppS3Spec extends S3Spec with SparkSpec {
   hadoopConf.set("fs.s3a.path.style.access", "true")
   hadoopConf.set("fs.s3a.s3.client.factory.impl", classOf[NonChunkedDefaultS3ClientFactory].getName)
   hadoopConf.set("fs.s3a.multiobjectdelete.enable", "false")
+  hadoopConf.set("fs.s3a.change.detection.version.required", "false")
 
   val testSparkApp: SampleSparkAppS3 = new SampleSparkAppS3(spark, testBucketName)
 

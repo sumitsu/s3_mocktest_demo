@@ -9,7 +9,7 @@ import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
 
 object AmazonS3TestUtil {
 
-  val MockS3ServerPortEnvVar: String = "MOTO_SERVER_PORT"
+  val MockS3ServerPortEnvVar: String = "MOCK_SERVER_PORT"
   val MockS3ServerPortDefault: Int = 9999
   val AwsEndpointUriStr: String =
     s"http://localhost:${Option(System.getenv(MockS3ServerPortEnvVar)).getOrElse(MockS3ServerPortDefault)}/"
