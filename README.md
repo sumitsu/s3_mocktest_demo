@@ -4,4 +4,4 @@
 
 Demo application for testing S3-integrated Scala/Spark apps using local mocking implementation of the AWS S3 service.
 
-**Read more here: [https://medium.com/@sumitsu/unit-testing-aws-s3-integrated-scala-spark-components-using-local-s3-mocking-tools-8bb90fd58fa2]**
+**https://medium.com/@sumitsu/unit-testing-aws-s3-integrated-scala-spark-components-using-local-s3-mocking-tools-8bb90fd58fa2**
