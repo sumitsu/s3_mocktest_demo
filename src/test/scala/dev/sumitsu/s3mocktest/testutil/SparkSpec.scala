@@ -24,7 +24,4 @@ trait SparkSpec {
 
 object SparkSpec {
   val IpAddrSparkMaster: String = "127.0.0.1"
-  val SparkDriverMemory: String = "2G"
-  val SparkDriverMaxResultSize: String = "1G"
-  val SparkExecutorMemory: String = "2G"
 }
